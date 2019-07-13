@@ -1,7 +1,7 @@
 THRESHOLD = (0,100) # Grayscale threshold for dark things... (5, 70, -23, 15, -57, 0)(18, 100, 31, -24, -21, 70)
 import sensor, image, time
-from pyb import LED
-from pyb import UART,Timer
+from pyb import LED         ##pyboard主要是针对STM32系列的单片机
+from pyb import UART,Timer  ##引入串口 定时器
 #import car
 #from pid import PID
 #rho_pid = PID(p=0.4, i=0)
@@ -9,7 +9,7 @@ from pyb import UART,Timer
 
 uart = UART(3,115200)#初始化串口 波特率 115200
 
-#LED(1).on()
+LED(1).on()
 #LED(2).on()
 #LED(3).on()
 sensor.reset()
@@ -54,7 +54,7 @@ class receive(object):
     state = 0
 R=receive()
 
-class ctrl(object):
+class ctrl(object): ##继承object 是为新式类
     work_mode = 0x01 #工作模式.默认是点检测，可以通过串口设置成其他模式
     check_show = 1   #开显示，在线调试时可以打开，离线使用请关闭，可提高计算速度
 
